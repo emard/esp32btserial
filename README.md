@@ -6,6 +6,5 @@ Standard bluetooth serial is used (non-BLE).
 
 If ESP32 is rebooted, subsequent connections succeeds
 but no serial traffic appears with "Garmin GLO" GPS I
-have tested. To restore traffic, GPS has be manually
-turned OFF and ON. I don't know how to handle that
-automatically.
+have tested. To restore traffic, GPS must be turned OFF
+and ON. I don't know how to handle that automatically.
