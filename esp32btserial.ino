@@ -34,23 +34,25 @@ void reconnect()
 
 void loop()
 {
-  static int x=0;
+  static uint16_t tprev, t;
+  t = millis();
+  int16_t tms = (int16_t)(t-tprev);
+
   if (connected && SerialBT.available())
   {
     // read returns char or -1 if unavailable
     char b = SerialBT.read();
     Serial.print(b);
     digitalWrite(LED_BUILTIN,1);
-    x=0;
+    tprev=t;
   }
   else
   {
-    x++;
-    if(x > 400000) // few seconds of serial silence
+    if(tms > 4000) // 4 seconds of serial silence
     {
       digitalWrite(LED_BUILTIN,0);
-      x = 0;
       reconnect();
+      tprev = millis();
     }
   }
 }
